@@ -1,8 +1,8 @@
-﻿// 2.cpp : Определяет точку входа для приложения.
+﻿// WindowsProject1.cpp : Определяет точку входа для приложения.
 //
 
 #include "framework.h"
-#include "2.h"
+#include "WindowsProject1.h"
 
 #define MAX_LOADSTRING 100
 
@@ -29,7 +29,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // Инициализация глобальных строк
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_MY2, szWindowClass, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_WINDOWSPROJECT1, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
     // Выполнить инициализацию приложения:
@@ -38,7 +38,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MY2));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WINDOWSPROJECT1));
 
     MSG msg;
 
@@ -73,10 +73,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MY2));
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINDOWSPROJECT1));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_MY2);
+    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_WINDOWSPROJECT1);
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -113,134 +113,98 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 //
 //  ФУНКЦИЯ: WndProc(HWND, UINT, WPARAM, LPARAM)
-void DrawHome(HDC hdc) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-    SelectObject(hdc, hPen);
-    //Каркас домика
-    MoveToEx(hdc, 400, 460, NULL);
-    LineTo(hdc, 550, 460);
-    LineTo(hdc, 550, 600);
-    LineTo(hdc, 400, 600);
-    LineTo(hdc, 400, 460);
-    MoveToEx(hdc, 670, 415, NULL);
-    LineTo(hdc, 670, 530);
-    LineTo(hdc, 550, 600);
-    //Крыша
-    MoveToEx(hdc, 370, 460, NULL);
-    LineTo(hdc, 580, 460);
-    LineTo(hdc, 710, 390);
-    LineTo(hdc, 600, 230);
-    LineTo(hdc, 480, 310);
-    LineTo(hdc, 370, 460);
-    MoveToEx(hdc, 580, 460, NULL);
-    LineTo(hdc, 480, 310);
-    MoveToEx(hdc, 400, 450, NULL);
-    LineTo(hdc, 475, 340);
-    LineTo(hdc, 550, 450);
-    MoveToEx(hdc, 550, 450, NULL);
-    LineTo(hdc, 400, 450);
-    //Окна
-    MoveToEx(hdc, 440, 500, NULL);
-    LineTo(hdc, 510, 500);
-    LineTo(hdc, 510, 560);
-    LineTo(hdc, 440, 560);
-    LineTo(hdc, 440, 500);
-    MoveToEx(hdc, 465, 500, NULL);
-    LineTo(hdc, 465, 560);
-    MoveToEx(hdc, 440, 520, NULL);
-    LineTo(hdc, 465, 520);
-    //Труба
-    MoveToEx(hdc, 500, 295, NULL);
-    LineTo(hdc, 500, 240);
-    LineTo(hdc, 520, 230);
-    LineTo(hdc, 550, 240);
-    LineTo(hdc, 530, 250);
-    LineTo(hdc, 500, 240);
-    MoveToEx(hdc, 530, 250, NULL);
-    LineTo(hdc, 530, 275);
-    MoveToEx(hdc, 550, 240, NULL);
-    LineTo(hdc, 550, 265);
-    //Дверь
-    MoveToEx(hdc, 610, 566, NULL);
-    LineTo(hdc, 610, 490);
-    LineTo(hdc, 640, 470);
-    LineTo(hdc, 640, 545);
-    //Елка
-    hPen = CreatePen(PS_SOLID, 5, RGB(0, 155, 0));
-    SelectObject(hdc, hPen);
-    MoveToEx(hdc, 915, 410, NULL);
-    LineTo(hdc, 900, 410);
-    LineTo(hdc, 900, 370);
-    LineTo(hdc, 940, 370);
-    LineTo(hdc, 900, 300);
-    LineTo(hdc, 930, 300);
-    LineTo(hdc, 900, 240);
-    LineTo(hdc, 930, 240);
-    LineTo(hdc, 900, 190);
-    LineTo(hdc, 870, 240);
-    LineTo(hdc, 900, 240);
-    LineTo(hdc, 870, 300);
-    LineTo(hdc, 900, 300);
-    LineTo(hdc, 860, 370);
-    LineTo(hdc, 900, 370);
-
-    MoveToEx(hdc, 1150, 480, NULL);
-    LineTo(hdc, 1190, 440);
-    LineTo(hdc, 1250, 460);
-    LineTo(hdc, 1190, 400);
-    LineTo(hdc, 1250, 410);
-    LineTo(hdc, 1200, 340);
-    LineTo(hdc, 1260, 360);
-    LineTo(hdc, 1200, 290);
-    LineTo(hdc, 1165, 355);
-
-    LineTo(hdc, 1200, 340);
-    LineTo(hdc, 1160, 410);
-    LineTo(hdc, 1200, 400);
-    LineTo(hdc, 1150, 480);
-    LineTo(hdc, 1190, 440);
-    LineTo(hdc, 1140, 430);
-    LineTo(hdc, 1200, 400);
-    LineTo(hdc, 1140, 390);
-    LineTo(hdc, 1200, 340);
-    LineTo(hdc, 1155, 330);
-    LineTo(hdc, 1200, 290);
-    LineTo(hdc, 1240, 315);
-    LineTo(hdc, 1230, 320);
-    MoveToEx(hdc, 1200, 340, NULL);
-    LineTo(hdc, 1235, 370);
-    LineTo(hdc, 1225, 378);
-    MoveToEx(hdc, 1200, 400, NULL);
-    LineTo(hdc, 1240, 420);
-    LineTo(hdc, 1217, 425);
-    //Дерево
-    hPen = CreatePen(PS_SOLID, 5, RGB(119, 67, 66));
-    SelectObject(hdc, hPen);
-    MoveToEx(hdc, 200, 370, NULL);
-    LineTo(hdc, 200, 200);
-    LineTo(hdc, 190, 190);
-    hPen = CreatePen(PS_SOLID, 5, RGB(0, 155, 0));
-    SelectObject(hdc, hPen);
-    MoveToEx(hdc, 190, 190, NULL);
-    LineTo(hdc, 160, 170);
-    MoveToEx(hdc, 200, 340, NULL);
-    LineTo(hdc, 190, 300);
-    LineTo(hdc, 170, 260);
-    MoveToEx(hdc, 200, 300, NULL);
-    LineTo(hdc, 250, 260);
-    MoveToEx(hdc, 200, 250, NULL);
-    LineTo(hdc, 180, 210);
-    MoveToEx(hdc, 200, 200, NULL);
-    LineTo(hdc, 220, 180);
-    LineTo(hdc, 270, 170);
-    MoveToEx(hdc, 210, 190, NULL);
-    LineTo(hdc, 240, 220);
-    MoveToEx(hdc, 220, 286, NULL);
-    LineTo(hdc, 250, 290);
-    }
-//  ЦЕЛЬ: Обрабатывает сообщения в главном окне.
 //
+//  ЦЕЛЬ: Обрабатывает сообщения в главном окне.
+
+void StClausAuto(HDC hdc) {
+    //Верхний треугольник 
+    MoveToEx(hdc, 20, 0, NULL);
+    LineTo(hdc, 30, 20);
+    LineTo(hdc, 10, 20);
+    LineTo(hdc, 20, 0);
+
+    //Средний треугольник 
+    MoveToEx(hdc, 20, 10, NULL);
+    LineTo(hdc, 30, 40);
+    LineTo(hdc, 10, 40);
+    LineTo(hdc, 20, 10);
+    
+    //Нижний треугольник 
+    MoveToEx(hdc, 20, 30, NULL);
+    LineTo(hdc, 40, 80);
+    LineTo(hdc, 0, 80);
+    LineTo(hdc, 20, 30);
+}
+
+void Claus11(HDC hdc, int x, int y) {
+    //Верхний треугольник 
+    MoveToEx(hdc, 20+x, 0+y, NULL);
+    LineTo(hdc, 30+x, 20+y);
+    LineTo(hdc, 10+x, 20+y);
+    LineTo(hdc, 20+x, 0+y);
+
+    //Средний треугольник 
+    MoveToEx(hdc, 20+x, 10+y, NULL);
+    LineTo(hdc, 30+x, 40+y);
+    LineTo(hdc, 10+x, 40+y);
+    LineTo(hdc, 20+x, 10+y);
+
+    //Нижний треугольник 
+    MoveToEx(hdc, 20+x, 30+y, NULL);
+    LineTo(hdc, 40+x, 80+y);
+    LineTo(hdc, 0+x, 80+y);
+    LineTo(hdc, 20+x, 30+y);
+}
+
+
+void Claus1__f1(HDC hdc) {
+    Claus11(hdc, 700, 250);//По диагонали 
+    Claus11(hdc, 750, 300);
+    Claus11(hdc, 800, 350);
+    Claus11(hdc, 850, 400);
+
+}
+void Clais(HDC hdc){
+    Claus11(hdc, 100, 200);
+    Claus11(hdc, 500, 200);
+    Claus11(hdc, 500, 600);
+    Claus11(hdc, 100, 600);
+    Claus11(hdc, 300, 400);
+}
+
+void Clais1(HDC hdc) {
+    int x = 0;
+    do {
+        Claus11(hdc, x, 0);
+        x += 50;
+    } while (x <= 500);
+    /*StClausAuto(hdc);
+    Claus11(hdc, 50, 0);
+    Claus11(hdc, 100, 0);
+    Claus11(hdc, 150, 0);
+    Claus11(hdc, 200, 0);
+    Claus11(hdc, 250, 0);
+    Claus11(hdc, 300, 0);
+    Claus11(hdc, 350, 0);
+    Claus11(hdc, 400, 0);
+    Claus11(hdc, 450, 0);
+    Claus11(hdc, 500, 0);*/
+}
+void Clais2(HDC hdc) {
+    int y = 0;
+    do {
+        Claus11(hdc, 0, y);
+        y += 100;
+    } while (y <= 700);
+    /*Claus11(hdc, 0, 100);
+    Claus11(hdc, 0, 200);
+    Claus11(hdc, 0, 300);
+    Claus11(hdc, 0, 400);
+    Claus11(hdc, 0, 500);
+    Claus11(hdc, 0, 600);
+    Claus11(hdc, 0, 700);*/
+}
+
 //  WM_COMMAND  - обработать меню приложения
 //  WM_PAINT    - Отрисовка главного окна
 //  WM_DESTROY  - отправить сообщение о выходе и вернуться
@@ -272,9 +236,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
+            
 
-            //рисование из ЛБ 4
-            DrawHome(hdc);
+            Claus1__f1(hdc);
+            //логотип
+            
+            Clais(hdc);
+            
+            
+            //в ряд
+            Clais1(hdc);
+
+            //в столбец
+            Clais2(hdc);
 
             EndPaint(hWnd, &ps);
         }
