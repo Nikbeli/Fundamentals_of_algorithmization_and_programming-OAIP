@@ -24,17 +24,17 @@
     <ClInclude Include="Resource.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="WindowsProject1.h">
+    <ClInclude Include="2.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WindowsProject1.cpp">
+    <ClCompile Include="2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="WindowsProject1.rc">
+    <ResourceCompile Include="2.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -42,7 +42,7 @@
     <Image Include="small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="WindowsProject1.ico">
+    <Image Include="2.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
