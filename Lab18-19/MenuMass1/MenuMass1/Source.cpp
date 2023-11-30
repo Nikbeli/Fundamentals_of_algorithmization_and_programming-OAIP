@@ -5,6 +5,8 @@
 #define MAX_N 8
 #define MAX_M 10
 
+// Массивы
+
 int arr[MAX_N][MAX_M] = {
 	{10, 11, 12, 13},
 	{20, 21,  9, 23},
