@@ -1,17 +1,17 @@
 ﻿//{{NO_DEPENDENCIES}}
 // Включаемый файл, созданный в Microsoft Visual C++.
-// Используется Polygon2.rc
+// Используется Mouse.rc
 
 #define IDS_APP_TITLE			103
 
 #define IDR_MAINFRAME			128
-#define IDD_POLYGON2_DIALOG	102
+#define IDD_MOUSE_DIALOG	102
 #define IDD_ABOUTBOX			103
 #define IDM_ABOUT				104
 #define IDM_EXIT				105
-#define IDI_POLYGON2			107
+#define IDI_MOUSE			107
 #define IDI_SMALL				108
-#define IDC_POLYGON2			109
+#define IDC_MOUSE			109
 #define IDC_MYICON				2
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1

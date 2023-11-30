@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9fb48816-df18-40b7-b5d3-cf97eee28210}</ProjectGuid>
-    <RootNamespace>Polygon</RootNamespace>
+    <ProjectGuid>{b307250a-c318-496b-8391-a665e831abe2}</ProjectGuid>
+    <RootNamespace>Moving</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,18 +128,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Polygon.h" />
+    <ClInclude Include="Moving.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="Moving.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Polygon.rc" />
+    <ResourceCompile Include="Moving.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Polygon.ico" />
+    <Image Include="Moving.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

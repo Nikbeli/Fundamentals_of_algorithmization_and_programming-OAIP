@@ -1,8 +1,8 @@
-﻿// Polygon.cpp : Определяет точку входа для приложения.
+﻿// Moving.cpp : Определяет точку входа для приложения.
 //
 
 #include "framework.h"
-#include "Polygon.h"
+#include "Moving.h"
 
 #define MAX_LOADSTRING 100
 
@@ -10,6 +10,9 @@
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
+
+int image1_x = 0;     
+int image1_y = 0;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -29,7 +32,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // Инициализация глобальных строк
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_POLYGON, szWindowClass, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_MOVING, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
     // Выполнить инициализацию приложения:
@@ -38,7 +41,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_POLYGON));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MOVING));
 
     MSG msg;
 
@@ -73,10 +76,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_POLYGON));
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MOVING));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_POLYGON);
+    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_MOVING);
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -113,75 +116,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 //
 //  ФУНКЦИЯ: WndProc(HWND, UINT, WPARAM, LPARAM)
-
-void Image0(HDC hdc, int cx, int cy, COLORREF color) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, color);
-    SelectObject(hdc, hPen);
-    POINT p[4] = {
-        cx,        cy + 20,
-        cx + 20,   cy - 20,
-        cx - 20,   cy - 20,
-        cx,        cy + 20
-    };
-    Polyline(hdc, p, 4);
-    DeleteObject(hPen);
-}
-
-void Image1(HDC hdc, int cx, int cy, COLORREF color) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, color);
-    SelectObject(hdc, hPen);
-    POINT p[4] = {
-        cx,        cy - 20,
-        cx + 20,   cy + 20,
-        cx - 20,   cy + 20,
-        cx,        cy - 20
-    };
-    Polyline(hdc, p, 4);
-    DeleteObject(hPen);
-}
-
-void PictureV(HDC hdc) {
-    int x, y, i;
-    x = 600;
-    y = 50;
-    i = 0;
-    do {
-        Image0(hdc, x, y, RGB(0, 255, 0));
-        y += 70;
-        i++;
-    } while (i < 6);
-}
-
-void PictureH(HDC hdc) {
-    int x, y, j;
-    x = 40; 
-    y = 400; 
-    j = 0; 
-    do {
-        Image0(hdc, x, y, RGB(255, 0, 0)); 
-        x += 50; 
-        j++;
-    } while (j < 11);
-}
-void PictureVH(HDC hdc) {
-    int x, y, i, j;        
-    y = 50;
-    i = 0;
-    do {
-        x = 700;
-        j = 0;
-        do {
-            Image0(hdc, x, y, RGB(255, 155, 155));
-            x += 50;
-            j++;
-        } while (j < 8);
-    y += 70;
-    i++;
-    }
-    while (i < 6);
-} 
+//
 //  ЦЕЛЬ: Обрабатывает сообщения в главном окне.
 //
 //  WM_COMMAND  - обработать меню приложения
@@ -209,29 +144,33 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
+    case WM_KEYDOWN:
+        switch (wParam) {
+        case VK_LEFT:    //Стрелка ВЛЕВО
+            image1_x -= 10;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        case VK_RIGHT:   //Стрелка ВПРАВО
+            image1_x += 10;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        case VK_DOWN:    //Стрелака ВНИЗ
+            image1_y += 10;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        case VK_UP:      //Стрелка ВВЕРХ
+            image1_y -= 10;
+            InvalidateRect(hWnd, NULL, TRUE);
+            break;
+        }
         break;
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-            Image0(hdc, 40, 40, RGB(255, 0, 0));
-            Image0(hdc, 140, 40, RGB(200, 0, 0));
-            Image0(hdc, 240, 40, RGB(150, 0, 0));
 
-            Image0(hdc, 240, 240, RGB(100, 0, 0));
-            Image0(hdc, 40, 240, RGB(0, 0, 0));
-
-            Image1(hdc, 300, 40, RGB(255, 0, 0));
-            Image1(hdc, 400, 40, RGB(200, 0, 0));
-            Image1(hdc, 500, 40, RGB(150, 0, 0));
-
-            Image1(hdc, 500, 240, RGB(100, 0, 0));
-            Image1(hdc, 300, 240, RGB(0, 0, 0));
-            
-            PictureV(hdc);
-            PictureH(hdc);
-            PictureVH(hdc);
+            Rectangle(hdc, image1_x - 10, image1_y - 10, image1_x + 10, image1_y + 10);
 
             EndPaint(hWnd, &ps);
         }

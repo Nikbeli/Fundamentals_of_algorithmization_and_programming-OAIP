@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ac352c5b-bb5d-4f0d-a17f-feed40b70bef}</ProjectGuid>
-    <RootNamespace>Polygon2</RootNamespace>
+    <ProjectGuid>{4110b831-32a8-483b-9a48-3b2e4bd449b1}</ProjectGuid>
+    <RootNamespace>Struct</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,19 +128,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Polygon2.h" />
+    <ClInclude Include="Images.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Struct.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Polygon2.cpp" />
+    <ClCompile Include="Images.cpp" />
+    <ClCompile Include="Struct.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Polygon2.rc" />
+    <ResourceCompile Include="Struct.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Polygon2.ico" />
     <Image Include="small.ico" />
+    <Image Include="Struct.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

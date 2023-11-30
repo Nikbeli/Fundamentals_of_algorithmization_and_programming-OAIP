@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{24cc1bab-2800-43c1-820d-3db4653f888c}</ProjectGuid>
-    <RootNamespace>Polygon3</RootNamespace>
+    <ProjectGuid>{ecad6d7f-bbcf-4cba-ad50-19b94bf15d2b}</ProjectGuid>
+    <RootNamespace>Mouse</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,18 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Polygon3.h" />
+    <ClInclude Include="Images.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Polygon3.cpp" />
+    <ClCompile Include="Images.cpp" />
+    <ClCompile Include="Mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Polygon3.rc" />
+    <ResourceCompile Include="Mouse.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Polygon3.ico" />
+    <Image Include="Mouse.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -24,17 +24,23 @@
     <ClInclude Include="Resource.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Polygon3.h">
+    <ClInclude Include="Mouse.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Images.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Polygon3.cpp">
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Images.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Polygon3.rc">
+    <ResourceCompile Include="Mouse.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -42,7 +48,7 @@
     <Image Include="small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="Polygon3.ico">
+    <Image Include="Mouse.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
