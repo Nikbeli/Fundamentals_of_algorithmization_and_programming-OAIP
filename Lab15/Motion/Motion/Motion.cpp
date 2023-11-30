@@ -1,18 +1,44 @@
-﻿// Moving.cpp : Определяет точку входа для приложения.
+﻿// Motion.cpp : Определяет точку входа для приложения.
 //
 
 #include "framework.h"
-#include "Moving.h"
+#include "Motion.h"
+#include "Images.h"
 
 #define MAX_LOADSTRING 100
+#define NUM_IM_A 9
+
+struct Image {
+    int x;
+    int y;
+    int vx;
+    int vy;
+};
+typedef struct Image IMAGE;
+struct Image im1 = { 100, 200, 10, 0 };
+struct Image im2 = { 400, 200, -10, 0 };
+struct Image im3 = { 400, 400, 10, 0 };
+struct Image im4 = { 400, 500, -10, 0 };
+struct Image im5 = { 600, 300, -10, 0 };
+struct Image imA[NUM_IM_A] = {
+    {700, 300, 10, 0},
+    {700, 300,9,4},
+    {700, 300,7,7},
+    {700, 300,4,9},
+    {700, 300,0,10},
+    {700, 300,-4,9},
+    {700, 300,-7,7},
+    {700, 300,-9,4},
+    {700, 300,-10,0},
+};
 
 // Глобальные переменные:
 HINSTANCE hInst;                                // текущий экземпляр
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
 
-int image1_x = 0;     
-int image1_y = 0;
+int image1_x = 100;
+int image1_y = 100;
 
 // Отправить объявления функций, включенных в этот модуль кода:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -32,7 +58,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // Инициализация глобальных строк
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_MOVING, szWindowClass, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_MOTION, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
     // Выполнить инициализацию приложения:
@@ -41,7 +67,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MOVING));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MOTION));
 
     MSG msg;
 
@@ -76,10 +102,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MOVING));
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MOTION));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_MOVING);
+    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_MOTION);
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -144,33 +170,59 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
-    case WM_KEYDOWN:
-        switch (wParam) {
-        case VK_LEFT:    //Стрелка ВЛЕВО
-            image1_x -= 10;
-            InvalidateRect(hWnd, NULL, TRUE);
-            break;
-        case VK_RIGHT:   //Стрелка ВПРАВО
-            image1_x += 10;
-            InvalidateRect(hWnd, NULL, TRUE);
-            break;
-        case VK_DOWN:    //Стрелака ВНИЗ
-            image1_y += 10;
-            InvalidateRect(hWnd, NULL, TRUE);
-            break;
-        case VK_UP:      //Стрелка ВВЕРХ
-            image1_y -= 10;
-            InvalidateRect(hWnd, NULL, TRUE);
-            break;
-        }
         break;
+    case WM_CREATE:
+        SetTimer(hWnd, 1, 50, 0);
+        break;
+    case WM_TIMER: {
+        im1.x += im1.vx;
+        im1.y += im1.vy;
+
+        im2.x += im2.vx;
+        im2.y += im2.vy;
+
+        im3.x += im3.vx;
+        im3.y += im3.vy;
+
+        im4.x += im4.vx;
+        im4.y += im4.vy;
+
+
+        int dx5 = rand() % 10;
+        int dy5 = rand() % 21 - 10;
+
+        im5.x += dx5;
+        im5.y += dy5;
+
+        int i = 0;
+        while (i < NUM_IM_A) {
+            imA[i].x += imA[i].vx;
+            imA[i].y += imA[i].vy;
+
+            i += 1;
+        }
+        InvalidateRect(hWnd, NULL, TRUE);
+    }
+        break;
+  
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
 
-            Rectangle(hdc, image1_x - 10, image1_y - 10, image1_x + 10, image1_y + 10);
+            Image0(hdc, im1.x, im1.y, RGB(128, 128, 0));
+            Image0(hdc, im2.x, im2.y, RGB(128, 128, 0));
+            Image0(hdc, im3.x, im3.y, RGB(128, 128, 0));
+            Image0(hdc, im4.x, im4.y, RGB(128, 128, 0));
+            Image0(hdc, im5.x, im5.y, RGB(128, 128, 0));
+
+            int i = 0;
+            while (i < NUM_IM_A) {
+                Image5(hdc, imA[i].x, imA[i].y, RGB(255, 0, 255));
+                i += 1;
+            }
+            //Image0(hdc, image1_x, image1_y, RGB(255, 0, 0));
 
             EndPaint(hWnd, &ps);
         }

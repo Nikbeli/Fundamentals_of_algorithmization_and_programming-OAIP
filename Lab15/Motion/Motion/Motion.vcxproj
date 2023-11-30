@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b307250a-c318-496b-8391-a665e831abe2}</ProjectGuid>
-    <RootNamespace>Moving</RootNamespace>
+    <ProjectGuid>{ff1b3e89-1f3a-48df-a216-0110396baa3c}</ProjectGuid>
+    <RootNamespace>Motion</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,18 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Moving.h" />
+    <ClInclude Include="Images.h" />
+    <ClInclude Include="Motion.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Moving.cpp" />
+    <ClCompile Include="Images.cpp" />
+    <ClCompile Include="Motion.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Moving.rc" />
+    <ResourceCompile Include="Motion.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Moving.ico" />
+    <Image Include="Motion.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
