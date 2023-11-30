@@ -24,17 +24,17 @@
     <ClInclude Include="Resource.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Graphtreug.h">
+    <ClInclude Include="Polygon.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Graphtreug.cpp">
+    <ClCompile Include="Polygon.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Graphtreug.rc">
+    <ResourceCompile Include="Polygon.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -42,7 +42,7 @@
     <Image Include="small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="Graphtreug.ico">
+    <Image Include="Polygon.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>

@@ -24,17 +24,17 @@
     <ClInclude Include="Resource.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Figure.h">
+    <ClInclude Include="Polygon2.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Figure.cpp">
+    <ClCompile Include="Polygon2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Figure.rc">
+    <ResourceCompile Include="Polygon2.rc">
       <Filter>Файлы ресурсов</Filter>
     </ResourceCompile>
   </ItemGroup>
@@ -42,7 +42,7 @@
     <Image Include="small.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="Figure.ico">
+    <Image Include="Polygon2.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>

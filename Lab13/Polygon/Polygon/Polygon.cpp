@@ -1,8 +1,8 @@
-﻿// Graphtreug.cpp : Определяет точку входа для приложения.
+﻿// Polygon.cpp : Определяет точку входа для приложения.
 //
 
 #include "framework.h"
-#include "Graphtreug.h"
+#include "Polygon.h"
 
 #define MAX_LOADSTRING 100
 
@@ -29,7 +29,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // Инициализация глобальных строк
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_GRAPHTREUG, szWindowClass, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_POLYGON, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
     // Выполнить инициализацию приложения:
@@ -38,7 +38,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_GRAPHTREUG));
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_POLYGON));
 
     MSG msg;
 
@@ -73,10 +73,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_GRAPHTREUG));
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_POLYGON));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_GRAPHTREUG);
+    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_POLYGON);
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -113,119 +113,75 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 //
 //  ФУНКЦИЯ: WndProc(HWND, UINT, WPARAM, LPARAM)
-void Image0(HDC hdc, int cx, int cy) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-    SelectObject(hdc, hPen);
-    POINT p[4];
-    p[0].x = cx;
-    p[0].y = cy + 20;
-    p[1].x = cx + 20;
-    p[1].y = cy - 20;
-    p[2].x = cx - 20;
-    p[2].y = cy - 20;
-    p[3].x = cx;
-    p[3].y = cy + 20;
-    Polyline(hdc, p, 4);
-    DeleteObject(hPen);
-}
 
-void Image1(HDC hdc, int cx, int cy) {
+void Image0(HDC hdc, int cx, int cy, COLORREF color) {
     HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+    hPen = CreatePen(PS_SOLID, 2, color);
     SelectObject(hdc, hPen);
     POINT p[4] = {
-        cx,      cy - 20,
-        cx + 20, cy + 20,
-        cx - 20, cy + 20,
-        cx,     cy - 20
+        cx,        cy + 20,
+        cx + 20,   cy - 20,
+        cx - 20,   cy - 20,
+        cx,        cy + 20
     };
     Polyline(hdc, p, 4);
     DeleteObject(hPen);
 }
 
-void Image2(HDC hdc, int cx, int cy) {
+void Image1(HDC hdc, int cx, int cy, COLORREF color) {
     HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+    hPen = CreatePen(PS_SOLID, 2, color);
     SelectObject(hdc, hPen);
-
-    POINT p[5] = {
-        cx,      cy - 20,
-        cx + 20, cy,
-        cx,      cy + 20,
-        cx - 20, cy,
-        cx,      cy - 20
+    POINT p[4] = {
+        cx,        cy - 20,
+        cx + 20,   cy + 20,
+        cx - 20,   cy + 20,
+        cx,        cy - 20
     };
-    Polyline(hdc, p, 5);
+    Polyline(hdc, p, 4);
     DeleteObject(hPen);
 }
 
-void Image3(HDC hdc, int cx, int cy) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-    SelectObject(hdc, hPen);
-
-    POINT p[5] = {
-        cx,      cy,
-        cx + 20, cy - 20,
-        cx + 40, cy,
-        cx + 20, cy - 40,
-        cx,      cy,
-    };
-    Polyline(hdc, p, 5);
-    DeleteObject(hPen);
+void PictureV(HDC hdc) {
+    int x, y, i;
+    x = 600;
+    y = 50;
+    i = 0;
+    do {
+        Image0(hdc, x, y, RGB(0, 255, 0));
+        y += 70;
+        i++;
+    } while (i < 6);
 }
 
-void Image4(HDC hdc, int cx, int cy) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-    SelectObject(hdc, hPen);
-
-    POINT p[5] = {
-        cx,      cy,
-        cx + 20, cy + 20,
-        cx + 40, cy,
-        cx + 20, cy + 40,
-        cx,      cy,
-    };
-    Polyline(hdc, p, 5);
-    DeleteObject(hPen);
+void PictureH(HDC hdc) {
+    int x, y, j;
+    x = 40; 
+    y = 400; 
+    j = 0; 
+    do {
+        Image0(hdc, x, y, RGB(255, 0, 0)); 
+        x += 50; 
+        j++;
+    } while (j < 11);
 }
-
-void Image5(HDC hdc, int cx, int cy) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-    SelectObject(hdc, hPen);
-
-    POINT p[7] = {
-        cx,  cy,
-        cx,  cy - 40,
-        cx + 40, cy - 40,
-        cx + 20, cy - 30,
-        cx + 40, cy - 20,
-        cx,      cy -20,
-        cx,  cy,
-    };
-    Polyline(hdc, p, 7);
-    DeleteObject(hPen);
-}
-void Image6(HDC hdc, int cx, int cy) {
-    HPEN hPen;
-    hPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-    SelectObject(hdc, hPen);
-
-    POINT p[6] = {
-        cx,  cy,
-        cx,  cy - 40,
-        cx + 20, cy - 20,
-        cx + 40, cy - 40,
-        cx + 40, cy,
-        cx,      cy,
-    };
-    Polyline(hdc, p, 6);
-    DeleteObject(hPen);
-}
-
+void PictureVH(HDC hdc) {
+    int x, y, i, j;        
+    y = 50;
+    i = 0;
+    do {
+        x = 700;
+        j = 0;
+        do {
+            Image0(hdc, x, y, RGB(255, 155, 155));
+            x += 50;
+            j++;
+        } while (j < 8);
+    y += 70;
+    i++;
+    }
+    while (i < 6);
+} 
 //  ЦЕЛЬ: Обрабатывает сообщения в главном окне.
 //
 //  WM_COMMAND  - обработать меню приложения
@@ -259,54 +215,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-            Image0(hdc, 40, 40);   //Треугольники
-            Image0(hdc, 140, 40);
-            Image0(hdc, 240, 40);
+            Image0(hdc, 40, 40, RGB(255, 0, 0));
+            Image0(hdc, 140, 40, RGB(200, 0, 0));
+            Image0(hdc, 240, 40, RGB(150, 0, 0));
 
-            Image0(hdc, 240, 240);
-            Image0(hdc, 40, 240);
+            Image0(hdc, 240, 240, RGB(100, 0, 0));
+            Image0(hdc, 40, 240, RGB(0, 0, 0));
 
-            Image1(hdc, 360, 40);  //Треугольники
-            Image1(hdc, 460, 40);
-            Image1(hdc, 560, 40);
+            Image1(hdc, 300, 40, RGB(255, 0, 0));
+            Image1(hdc, 400, 40, RGB(200, 0, 0));
+            Image1(hdc, 500, 40, RGB(150, 0, 0));
 
-            Image1(hdc, 560, 240);
-            Image1(hdc, 360, 240);
+            Image1(hdc, 500, 240, RGB(100, 0, 0));
+            Image1(hdc, 300, 240, RGB(0, 0, 0));
+            
+            PictureV(hdc);
+            PictureH(hdc);
+            PictureVH(hdc);
 
-            Image2(hdc,40, 320);   // Ромбики
-            Image2(hdc,140,320);
-            Image2(hdc, 240, 320);
-
-            Image2(hdc, 240, 520);
-            Image2(hdc, 40, 520);
-
-            Image3(hdc, 340,340);  // Галка
-            Image3(hdc, 440, 340);
-            Image3(hdc, 540, 340);
-
-            Image3(hdc, 540, 540);
-            Image3(hdc, 340, 540);
-
-            Image4(hdc, 640, 20);  // Галка
-            Image4(hdc, 740, 20);
-            Image4(hdc, 840, 20);
-
-            Image4(hdc, 840, 220); 
-            Image4(hdc, 640, 220);
-
-            Image5(hdc, 640,340);   // Флаг
-            Image5(hdc, 740, 340);
-            Image5(hdc, 840, 340);
-
-            Image5(hdc, 840, 540);
-            Image5(hdc, 640, 540);
-
-            Image6(hdc, 940, 60);   // Фигура
-            Image6(hdc, 1040, 60);
-            Image6(hdc, 1140, 60);
-
-            Image6(hdc, 940, 260);
-            Image6(hdc, 1140, 260);
             EndPaint(hWnd, &ps);
         }
         break;

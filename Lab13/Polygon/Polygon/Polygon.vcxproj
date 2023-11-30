@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{77064186-3374-46e5-9d9b-9dd996436640}</ProjectGuid>
-    <RootNamespace>Figure</RootNamespace>
+    <ProjectGuid>{9fb48816-df18-40b7-b5d3-cf97eee28210}</ProjectGuid>
+    <RootNamespace>Polygon</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,19 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Figure.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Polygon.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="Polygon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Figure.rc" />
+    <ResourceCompile Include="Polygon.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Figure.ico" />
+    <Image Include="Polygon.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
