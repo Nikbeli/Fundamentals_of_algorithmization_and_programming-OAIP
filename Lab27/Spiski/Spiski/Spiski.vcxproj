@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ca659cbb-4fa0-4e6e-81b1-89ea5ce2d439}</ProjectGuid>
-    <RootNamespace>DinMass3</RootNamespace>
+    <ProjectGuid>{e3daeb35-b69d-4010-b346-7b4a192bef2f}</ProjectGuid>
+    <RootNamespace>Spiski</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
