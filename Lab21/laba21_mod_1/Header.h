@@ -1,9 +1,0 @@
-#pragma once
-void testisdigit1();
-void testisupper_1();
-void testisupper_2();
-void testisupper_3();
-void testtoupper_1();
-void testtoupper_2();
-void testisspace_1();
-void testisspace_2();
