@@ -1,4 +1,5 @@
-﻿#include <stdio.h>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
 
@@ -17,7 +18,6 @@ void printAllElements() {  //Вывод элементов массива
 
 void fillIx10() {  //Заполнение 10тками
 	int i = 0;
-
 	while (i < NUM_ELEMENTS) {
 		arr[i] = i * 10;
 		printf("%d ", arr[i]);
