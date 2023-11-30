@@ -1,0 +1,63 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <Windows.h>
+
+#define MAX_LEN 80
+
+void main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	printf("Белянин Никита\n");
+	printf("ЛР23 Задача 4\n");
+
+	// Входной файл
+	FILE* fin = fopen("C:\\Users\\Никита\\source\\repos\\Program create\\ULSTU\\Lab23\\txt\\text1.txt", "rt");
+if (fin == NULL) {
+	printf("Входной файл не найден");
+	return;
+}
+
+// Выходной файл
+FILE* fout;
+fout = fopen("C:\\Users\\Никита\\source\\repos\\Program create\\ULSTU\\Lab23\\txt\\out5.txt", "wt");
+if (fout == NULL) {
+	printf("Выходной файл не создался");
+	return;
+}
+
+int c;
+int isletter = 0;
+char wword[MAX_LEN];
+int wword_len = 0;
+while ((c = getc(fin)) != EOF) {
+	if (isalpha((unsigned char)c)) {
+		if (!isletter) {
+			wword_len = 0;
+			isletter = 1;
+		}
+		if (wword_len < MAX_LEN - 1) {
+			wword[wword_len++] = c;
+		}
+
+	}
+	else {
+		if (isletter) {
+			wword[wword_len] = '\0';
+			fprintf(fout, "%s", wword);
+			int iscaps = 0;
+			for (int i = 0; wword[i] != '\0'; i++) {
+				if ((islower((unsigned char)wword[i])))
+					iscaps = 1;
+			}
+			if (iscaps) {
+				fprintf(fout, "-");
+				printf("%s\n", wword);
+			}
+		}
+		isletter = 0;
+		fprintf(fout, "%c", c);
+	}
+}
+
+fclose(fout);
+fclose(fin);

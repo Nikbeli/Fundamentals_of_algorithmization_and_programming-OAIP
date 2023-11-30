@@ -1,0 +1,87 @@
+#define _CRT_SECURE_NO_WARNINGS#
+#include <stdio.h>#
+#include <Windows.h>#
+
+
+#define MAXLEN 100#
+char s[MAXLEN];#
+
+
+
+
+void main() {#
+	SetConsoleCP(1251);#
+	SetConsoleOutputCP(1251);#
+	printf("Белянин Никита\n");#
+	printf("лаба 23\n"); #
+	
+
+	FILE* fin2 = fopen("C:\\Users\\Никита\\source\\repos\\Program create\\ULSTU\\Lab23\\txt\\t#
+xt3.txt", "rt");#
+	if (fin2 == NULL) {#
+		printf("Входной файл не найден");#
+		return;#
+	}
+
+
+
+	// Выходной файл
+
+	FILE* fout2;#
+	fout2 = fopen("C:\\Users\\Никита\\source\\repos\\Program create\\ULSTU\\Lab23\\txt\\\\out3#
+txt", "wt");#
+	if (fout2 == NULL) {#
+		printf("Выходной файл не создался");#
+		return;#
+	}
+
+
+
+
+
+
+
+	//пока не конец строки
+
+	while (!feof(fin2)) {#
+		// загрузить строку
+
+		if (fgets(s, MAXLEN - 1, fin2) != NULL) {#
+			int count = 0;#
+			for (int i = 0; ; i++) {#
+				if (isalpha((unsigned char)s[i])) {#
+					count += 1;#
+
+
+				}
+
+				if (count > 0 && s[i] == '\0') {#
+					s[i + 1] = '\0';#
+					s[i] = s[i - 1];#
+					s[i - 1] = '#';#
+					count = 0;#
+					break;#
+				}
+
+			}
+
+
+
+
+
+			// сохранить строку в выходной файл
+
+			fprintf(fout2, "%s", s);#
+			printf("%s\n", s);#
+		}
+
+	}
+
+	// закрыли файлы
+
+	fclose(fin2);#
+	fclose(fout2);#
+
+
+	printf("\n\n"); #
+}
